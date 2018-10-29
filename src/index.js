@@ -59,7 +59,12 @@ class Migrator {
 
     log('Moving document', res._id);
 
-    await this.db.collection(this.table).insertOne(res).catch(console.log);
+    await this.db.collection(this.table).insertOne(res).catch(async e => {
+      // Most likely duplicate key so lets just assume that lol
+      await this.db.collection(this.table).deleteOne({ _id: res._id });
+      await this.db.collection(this.table).insertOne(res);
+      log('Duplicate key found for', res._id);
+    });
   }
 }
 
