@@ -1,0 +1,7 @@
+{
+  "rethinkdb": { "db": "vexera" },
+  "mongodb": "mongodb://localhost/testdb",
+
+  "table": "guilds",
+  "conditions": { "user": false }
+}
