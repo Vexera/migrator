@@ -32,6 +32,8 @@ class Migrator {
     for(let id of this.ids) {
       await this.moveDocument(id);
     }
+
+    log('Done!')
   }
 
   async getDocumentIDs() {
